@@ -3,7 +3,12 @@ on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
+
+
     steps:
+      - run: ls
+      - name: Main
+        run: node scripts/setup-npm-version.js
       - name: GitHub Action for LaTeX
         uses: xu-cheng/latex-action@4.0.0
         with:
