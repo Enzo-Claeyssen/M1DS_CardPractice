@@ -33,6 +33,6 @@ jobs:
             title: "New release"
       - name: Remove card.pdf from tracked files
         run: |
-            git rm -r --cached card.pdf
+            git rm card.pdf
             git commit -m "[AUTOMATIC] Untrack card.pdf"
             git push origin HEAD:2-no-release-created
