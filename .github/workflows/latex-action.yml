@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
-        with:
-            ref: ${{ github.ref_name  }}
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v4
         with:
@@ -24,7 +22,7 @@ jobs:
           git config --global user.email "donot-mail@users.noreply.github.com"
           git add card.pdf
           git commit -m "[AUTOMATIC] Added new card.pdf"
-          git push
+          git push origin HEAD:2-no-release-created
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
       - name: Create Release
@@ -37,4 +35,4 @@ jobs:
         run: |
             git rm card.pdf
             git commit -m "[AUTOMATIC] Untrack card.pdf"
-            git push
+            git push origin HEAD:2-no-release-created
