@@ -33,10 +33,14 @@ jobs:
         with:
             title: "New release"
       - name: Upload PDF
-        uses: actions/upload-artifact@v4
+        uses: svenstaro/upload-release-action@v2
         with:
-            path: ./card.pdf
-            name: card.pdf
+            repo_token: ${{ secrets.GITHUB_TOKEN }}
+            file: ./card.pdf
+            asset_name: card.pdf
+            tag: ${{ github.ref }}
+            overwrite: true
+            body: "New release"
       - name: Remove card.pdf from tracked files
         run: |
             git rm card.pdf
