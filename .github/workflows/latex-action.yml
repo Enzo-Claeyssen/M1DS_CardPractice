@@ -33,14 +33,10 @@ jobs:
         with:
             title: "New release"
       - name: Upload PDF
-        id: Upload PDF
-        uses: actions/upload-release-asset@v1
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/upload-artifact@v4
         with:
-            upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: ./card.pdf
-            asset_name: card.pdf
+            path: ./card.pdf
+            name: card.pdf
       - name: Remove card.pdf from tracked files
         run: |
             git rm card.pdf
